@@ -46,13 +46,13 @@ class LoginScreen extends StatelessWidget {
               Center(
                 child: CustomImageView(
                   imagePath: AppAssets.logoTransparent,
-                  imageType: ImageType.assets, 
+                  imageType: ImageType.assets,
                   width: 100.w,
                   height: 100.h,
                 ),
               ),
               const SizedBox(height: 20),
-              
+
               // Title
               Text("Welcome Back!",
                   style: Theme.of(context).textTheme.headlineMedium),
@@ -60,7 +60,7 @@ class LoginScreen extends StatelessWidget {
               Text("Please log in to continue",
                   style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 40),
-              
+
               // Email Field
               CustomTextField(
                 controller: emailController,
@@ -69,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                 validator: (value) => ValidatorUtils.validateEmail(value),
               ),
               const SizedBox(height: 20),
-              
+
               // Password Field
               CustomTextField(
                 controller: passwordController,
@@ -78,18 +78,19 @@ class LoginScreen extends StatelessWidget {
                 validator: (value) => ValidatorUtils.validatePassword(value),
               ),
               const SizedBox(height: 20),
-              
+
               // Login Button
               CustomElevatedButton(
                 label: 'Login',
                 onPressed: () => _handleLogin(context),
               ),
               const SizedBox(height: 20),
-              
+
               // Signup Navigation
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/signup'); // Navigate to Signup screen
+                  Navigator.pushNamed(
+                      context, '/signup'); // Navigate to Signup screen
                 },
                 child: const Text("Don't have an account? Sign Up"),
               ),
