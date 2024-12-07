@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:laziness_slayer/src/presentations/custom_widgets/custom_image_view.dart';
+
 import 'package:laziness_slayer/src/utils/app_assets.dart';
 import 'package:laziness_slayer/src/utils/enums.dart';
+import 'package:laziness_slayer/src/utils/navigation_utils.dart';
 import 'package:laziness_slayer/src/utils/validator_utils.dart';
 import '../../../custom_widgets/buttons/custom_elevated_button.dart';
 import '../../../custom_widgets/custom_text_field.dart';
@@ -89,8 +91,7 @@ class LoginScreen extends StatelessWidget {
               // Signup Navigation
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(
-                      context, '/signup'); // Navigate to Signup screen
+                  context.pushNamed("routeName"); // Navigate to Signup screen
                 },
                 child: const Text("Don't have an account? Sign Up"),
               ),

@@ -13,17 +13,35 @@ class CustomOutlineButton extends BaseButton {
     super.buttonColor,
     super.textStyle,
     super.borderSide,
+    this.activeTextColor,
+    this.inactiveTextColor,
+    this.activeBorderColor,
+    this.inactiveBorderColor,
+    this.isActive = true, // New property to define active state
   });
+
+  // Properties for active and inactive text and border colors
+  final Color? activeTextColor;
+  final Color? inactiveTextColor;
+  final Color? activeBorderColor;
+  final Color? inactiveBorderColor;
+  final bool isActive; // Boolean to track if the button is active
 
   @override
   Widget buildButton(BuildContext context) {
     return OutlinedButton(
-      onPressed: onPressed,
+      onPressed: isActive ? onPressed : null, // Disable button if not active
       style: OutlinedButton.styleFrom(
-        side: borderSide ??
-            BorderSide(
-                color: buttonColor ?? Theme.of(context).primaryColor,
-                width: 1.5),
+        side: BorderSide(
+          color: isActive
+              ? activeBorderColor ??
+                  buttonColor ??
+                  Theme.of(context).primaryColor
+              : inactiveBorderColor ??
+                  buttonColor ??
+                  Theme.of(context).disabledColor,
+          width: 1.5,
+        ),
         textStyle: textStyle ??
             TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
@@ -37,10 +55,24 @@ class CustomOutlineButton extends BaseButton {
               children: [
                 icon!,
                 SizedBox(width: 8.w),
-                Text(label ?? ""),
+                Text(
+                  label ?? "",
+                  style: TextStyle(
+                    color: isActive
+                        ? activeTextColor ?? Colors.black
+                        : inactiveTextColor ?? Colors.grey,
+                  ),
+                ),
               ],
             )
-          : Text(label ?? ""),
+          : Text(
+              label ?? "",
+              style: TextStyle(
+                color: isActive
+                    ? activeTextColor ?? Colors.black
+                    : inactiveTextColor ?? Colors.grey,
+              ),
+            ),
     );
   }
 }

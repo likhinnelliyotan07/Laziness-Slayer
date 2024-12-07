@@ -16,14 +16,15 @@ class CustomIconButton extends BaseButton {
 
   @override
   Widget buildButton(BuildContext context) {
+    // Calculate the icon size dynamically based on padding
+    double iconSize = (padding?.vertical ?? 24.h) / 2;
+
     return IconButton(
       onPressed: onPressed,
       icon: icon!,
       color: iconColor ??
           Theme.of(context).iconTheme.color, // Default color from theme
-      iconSize: padding != null
-          ? (padding!.vertical / 2)
-          : 24.r, // Calculate size based on padding or default
+      iconSize: iconSize, // Icon size based on padding or default value
     );
   }
 }

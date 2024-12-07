@@ -1,154 +1,160 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:laziness_slayer/src/theme/app_styles.dart';
 import 'app_colors.dart';
-import 'app_styles.dart';
+
+// Assuming the text styles are defined in this file
 
 class AppTheme {
-  //light theme settings
+  // Light Theme
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
-    scaffoldBackgroundColor: AppColors.kPrimaryBackgroundLight,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.kChillyRed,
-      // Ensure this matches ThemeData's brightness
+    scaffoldBackgroundColor: AppColors.kWhiteColor,
+    colorScheme: const ColorScheme.light(
+      primary: AppColors.kLightPrimary, // Light primary background color
+      secondary: AppColors.kLightSecondary, // Secondary light theme color
+      error: AppColors.kLightError, // Light error color
+      surface: AppColors.kLightAccent, // Light surface color
+      onPrimary: AppColors.kWhiteColor, // Text color on primary background
+      onSecondary: AppColors.kLightTextPrimary, // Text color on secondary
+      onError: AppColors.kWhiteColor, // Text color on error background
+      onSurface: AppColors.kLightTextPrimary, // Text color on surfaces
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.kPrimaryBackgroundLight,
-      foregroundColor: AppColors.kBlackColor,
+      backgroundColor: AppColors.kWhiteColor,
+      foregroundColor: AppColors.kLightTextPrimary, // Text color on AppBar
       iconTheme: const IconThemeData(
-        color: AppColors.kBlackColor,
-      ),
-      titleTextStyle: const TextStyle(
-        color: AppColors.kBlackColor,
-      ),
+          color: AppColors.kLightTextPrimary), // Icon color on AppBar
+      titleTextStyle: AppTextStyles.lightAppBarTitle, // AppBar title text style
     ),
     iconTheme: const IconThemeData(
-      color: AppColors.kBlackColor,
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: AppColors.kPrimaryBackgroundLight,
-      selectedItemColor: AppColors.kRedColor,
-      unselectedItemColor: AppColors.kBlackColor,
+        color: AppColors.kLightTextPrimary), // Default icon color
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor:
+          AppColors.kWhiteColor, // Bottom navigation bar background color
+      selectedItemColor: AppColors.kLightPrimary, // Selected item color
+      unselectedItemColor:
+          AppColors.kLightTextSecondary, // Unselected item color
     ),
     inputDecorationTheme: InputDecorationTheme(
-      fillColor: AppColors.kPrimaryBackgroundLight,
+      fillColor: AppColors.kWhiteColor, // Input field background color
+      filled: true,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide:
+            const BorderSide(color: AppColors.kLightBorder), // Border color
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(color: AppColors.kLightBorder),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+            color: AppColors.kLightPrimary), // Border color on focus
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: AppColors.kBlackColor,
+        foregroundColor: AppColors.kDarkTextColor, // Text color on button
+        backgroundColor: AppColors.btnPrimaryLight, // Button background color
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.r),
+        ),
       ),
     ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: AppColors.kChillyRed,
-    ),
-    useMaterial3: true,
-    cardColor: AppColors.kAmberBackground,
-    canvasColor: AppColors.kGreyBgColor,
-    popupMenuTheme: const PopupMenuThemeData(
-      color: AppColors.kWhiteColor,
-      iconColor: AppColors.kBlackColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-      ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.kLightPrimary, // Progress indicator color
     ),
     chipTheme: ChipThemeData(
-      backgroundColor: AppColors.kAmberBackground,
-      disabledColor: AppColors.kAmberBackground,
-      labelStyle: AppTextStyles.style400GilroyMediumSize14.copyWith(
-        fontSize: 12.sp,
-        color: AppColors.kBlackColor,
-      ),
+      backgroundColor: AppColors.kLightSecondary, // Chip background color
+      disabledColor: AppColors.kLightInactive, // Chip disabled color
+      labelStyle: AppTextStyles.lightChipLabel, // Chip label text style
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(8.r),
-        ),
-        side: const BorderSide(
-          color: Colors.transparent,
-        ),
+        borderRadius: BorderRadius.circular(8.r),
       ),
     ),
-    dialogTheme: const DialogTheme(
-      backgroundColor: AppColors.kWhiteColor,
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: AppColors.kLightTextPrimary, // Cursor color
+      selectionHandleColor: AppColors.kLightPrimary, // Selection handle color
+      selectionColor: AppColors.kLightAccent, // Selection background color
     ),
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: AppColors.kBlackColor,
-      selectionHandleColor: AppColors.kBlackColor,
-      selectionColor: AppColors.kChillyRed,
-    ),
+    useMaterial3: true, // Enabling Material3
   );
 
-//dark theme settings
+  // Dark Theme
   static final darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppColors.kColor181819,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.kChillyRed,
-      // Ensure this matches ThemeData's brightness
-      brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.kDarkBackground, // Dark background color
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.kDarkPrimary, // Dark primary background color
+      secondary: AppColors.kDarkSecondary, // Secondary dark theme color
+      error: AppColors.kDarkError, // Dark error color
+      surface: AppColors.kDarkAccent, // Dark surface color
+      onPrimary: AppColors.kWhiteColor, // Text color on primary background
+      onSecondary: AppColors.kDarkTextPrimary, // Text color on secondary
+      onError: AppColors.kWhiteColor, // Text color on error background
+      onSurface: AppColors.kDarkTextPrimary, // Text color on surfaces
     ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.kColor181819,
-      foregroundColor: AppColors.kWhiteColor,
-      iconTheme: IconThemeData(
-        color: AppColors.kWhiteColor,
-      ),
-      titleTextStyle: TextStyle(
-        color: AppColors.kWhiteColor,
-      ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.kDarkBackground,
+      foregroundColor: AppColors.kDarkTextPrimary, // Text color on AppBar
+      iconTheme: const IconThemeData(
+          color: AppColors.kDarkTextPrimary), // Icon color on AppBar
+      titleTextStyle: AppTextStyles.darkAppBarTitle, // AppBar title text style
     ),
     iconTheme: const IconThemeData(
-      color: AppColors.kWhiteColor,
-    ),
+        color: AppColors.kDarkTextPrimary), // Default icon color
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColors.kColor181819,
-      selectedItemColor: AppColors.kRedColor,
-      unselectedItemColor: AppColors.kWhiteColor,
+      backgroundColor:
+          AppColors.kDarkBackground, // Bottom navigation bar background color
+      selectedItemColor: AppColors.kDarkPrimary, // Selected item color
+      unselectedItemColor:
+          AppColors.kDarkTextSecondary, // Unselected item color
     ),
-    inputDecorationTheme: const InputDecorationTheme(
-      fillColor: AppColors.kColor181819,
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.kDarkBackground, // Input field background color
+      filled: true,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide:
+            const BorderSide(color: AppColors.kDarkBorder), // Border color
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(color: AppColors.kDarkBorder),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+            color: AppColors.kDarkPrimary), // Border color on focus
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: AppColors.kWhiteColor,
+        foregroundColor: AppColors.kWhiteColor, // Text color on button
+        backgroundColor: AppColors.btnPrimaryDark, // Button background color
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.r),
+        ),
       ),
     ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: AppColors.kChillyRed,
-    ),
-    useMaterial3: true,
-    cardColor: AppColors.kBottomNavBgDark,
-    canvasColor: AppColors.kBottomNavBgDark,
-    popupMenuTheme: const PopupMenuThemeData(
-      color: AppColors.kBottomNavBgDark,
-      iconColor: AppColors.kWhiteColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-      ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.kDarkPrimary, // Progress indicator color
     ),
     chipTheme: ChipThemeData(
-      backgroundColor: AppColors.kColor292826,
-      disabledColor: AppColors.kColor292826,
-      labelStyle: AppTextStyles.style400GilroyMediumSize14.copyWith(
-        fontSize: 12.sp,
-        color: AppColors.kWhiteColor,
-      ),
+      backgroundColor: AppColors.kDarkSecondary, // Chip background color
+      disabledColor: AppColors.kDarkInactive, // Chip disabled color
+      labelStyle: AppTextStyles.darkChipLabel, // Chip label text style
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(8.r),
-        ),
-        side: const BorderSide(
-          color: Colors.transparent,
-        ),
+        borderRadius: BorderRadius.circular(8.r),
       ),
     ),
-    dialogTheme: DialogTheme(
-      backgroundColor: AppColors.kNegative,
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: AppColors.kDarkTextPrimary, // Cursor color
+      selectionHandleColor: AppColors.kDarkPrimary, // Selection handle color
+      selectionColor: AppColors.kDarkAccent, // Selection background color
     ),
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: AppColors.kWhiteColor,
-      selectionHandleColor: AppColors.kWhiteColor,
-      selectionColor: AppColors.kChillyRed,
-    ),
+    useMaterial3: true, // Enabling Material3
   );
 }
